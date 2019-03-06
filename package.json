@@ -6,7 +6,18 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
     "lint": "./node_modules/.bin/eslint \"{App/**/*.js,*.js}\"",
-    "format": "prettier-eslint --write \"{App/**/*.+(js|json),*.+(js|json)}\""
+    "format": "prettier-eslint --write \"{App/**/*.+(js|json),*.+(js|json)}\"",
+    "android:logcat": "$ANDROID_HOME/platform-tools/adb logcat *:S ReactNative:V ReactNativeJS:V",
+    "android:shake": "$ANDROID_HOME/platform-tools/adb devices | grep '\\t' | awk '{print $1}' | sed 's/\\s//g' | xargs -I {} $ANDROID_HOME/platform-tools/adb -s {} shell input keyevent 82",
+    "clean:android": "cd android/ && ./gradlew clean && cd .. && react-native run-android",
+    "clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && npm cache clean --force",
+    "fixcode": "standard --fix",
+    "lint": "./node_modules/.bin/eslint \"{App/**/*.js,*.js}\"",
+    "lintdiff": "git diff --diff-filter=d --cached --name-only -z -- '*.js' '*.jsx' '*.jsx' | xargs -0 -I % sh -c 'git show \":%\" | ./node_modules/.bin/eslint --stdin --stdin-filename \"%\";'",
+    "newclear": "rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf ios/build && rm -rf android/app/build && rm -rf node_modules/ && npm cache clean --force && npm i",
+    "precommit": "npm run lintdiff",
+    "android:production": "react-native run-android",
+    "ios:production": "npm run pod && react-native run-ios"
   },
   "dependencies": {
     "apisauce": "^1.0.2",
@@ -42,6 +53,7 @@
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
+    "husky": "^1.3.1",
     "jest": "24.1.0",
     "react-test-renderer": "16.6.3",
     "reactotron-redux": "^3.1.0"
