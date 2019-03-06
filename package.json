@@ -12,7 +12,6 @@
     "clean:android": "cd android/ && ./gradlew clean && cd .. && react-native run-android",
     "clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && npm cache clean --force",
     "fixcode": "standard --fix",
-    "lint": "./node_modules/.bin/eslint \"{App/**/*.js,*.js}\"",
     "lintdiff": "git diff --diff-filter=d --cached --name-only -z -- '*.js' '*.jsx' '*.jsx' | xargs -0 -I % sh -c 'git show \":%\" | ./node_modules/.bin/eslint --stdin --stdin-filename \"%\";'",
     "newclear": "rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf ios/build && rm -rf android/app/build && rm -rf node_modules/ && npm cache clean --force && npm i",
     "precommit": "npm run lintdiff",
