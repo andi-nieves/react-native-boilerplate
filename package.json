@@ -16,13 +16,7 @@
     "newclear": "rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf ios/build && rm -rf android/app/build && rm -rf node_modules/ && npm cache clean --force && npm i",
     "android:production": "react-native run-android",
     "ios:production": "npm run pod && react-native run-ios",
-    "precommit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --fix",
-      "git add"
-    ]
+    "precommit": "npm run lintdiff"
   },
   "dependencies": {
     "apisauce": "^1.0.2",
