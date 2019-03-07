@@ -1,9 +1,9 @@
 export default {
   getHeaders: async ({ extraHeaders }) => {
     return {
-      Accept: "application/json",
-      "Csrf-Token": "nocheck",
-      ...extraHeaders
+      Accept: 'application/json',
+      'Csrf-Token': 'nocheck',
+      ...extraHeaders,
     };
-  }
+  },
 };

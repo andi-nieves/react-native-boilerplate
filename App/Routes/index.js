@@ -5,11 +5,11 @@ import Screen2 from '../Containers/screen2';
 const Router = createStackNavigator(
   {
     Home: { screen: Home },
-    Screen2: { screen: Screen2 }
+    Screen2: { screen: Screen2 },
   },
   {
     initialRouteName: 'Home',
-    headerMode: 'none'
+    headerMode: 'none',
   }
 );
 

@@ -26,11 +26,11 @@ export default () => {
   const { store, sagaMiddleware } = configStore;
   let { sagasManager } = configStore;
   // eslint-disable-next-line
-	if (module.hot) {
+  if (module.hot) {
     // eslint-disable-next-line
-		module.hot.accept(() => {
+    module.hot.accept(() => {
       // eslint-disable-next-line
-			let nextRootReducer = require('./').reducers;
+      let nextRootReducer = require('./').reducers;
       if (ReduxPersist.active) {
         const persistConfig = ReduxPersist.storeConfig;
         nextRootReducer = persistReducer(persistConfig, reducers);
@@ -39,7 +39,7 @@ export default () => {
       store.replaceReducer(nextRootReducer);
 
       // eslint-disable-next-line
-			const newYieldedSagas = require('../Sagas').default;
+      const newYieldedSagas = require('../Sagas').default;
       sagasManager.cancel();
       sagasManager.done.then(() => {
         sagasManager = sagaMiddleware.run(newYieldedSagas);

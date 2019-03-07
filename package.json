@@ -1,5 +1,5 @@
 {
-  "name": "yourprojectnamehere",
+  "name": "andi",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -13,7 +13,7 @@
     "clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && npm cache clean --force",
     "fixcode": "standard --fix",
     "lintdiff": "git diff --diff-filter=d --cached --name-only -z -- '*.js' '*.jsx' '*.jsx' | xargs -0 -I % sh -c 'git show \":%\" | ./node_modules/.bin/eslint --stdin --stdin-filename \"%\";'",
-    "newclear": "rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf ios/build && rm -rf android/app/build && rm -rf node_modules/ && npm cache clean --force && npm i",
+    "newclear": "rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf ios/build && rm -rf android/app/build && rm -rf node_modules/ && npm cache clean --force && yarn",
     "android:production": "react-native run-android",
     "ios:production": "npm run pod && react-native run-ios",
     "precommit": "npm run lintdiff"
@@ -21,9 +21,11 @@
   "dependencies": {
     "apisauce": "^1.0.2",
     "lodash": "^4.17.11",
+    "prop-types": "^15.7.2",
+    "ramda": "^0.26.1",
     "react": "16.6.3",
     "react-native": "0.58.6",
-    "react-native-vector-icons": "^6.3.0",
+    "react-native-gesture-handler": "^1.1.0",
     "react-navigation": "^3.3.2",
     "react-navigation-redux-helpers": "1.1.0",
     "react-redux": "^6.0.1",
@@ -36,7 +38,8 @@
     "redux-saga": "^1.0.2",
     "reduxsauce": "^1.0.1",
     "seamless-immutable": "^7.1.4",
-    "standard": "^12.0.1"
+    "standard": "^12.0.1",
+    "reactotron-redux": "^3.1.0"
   },
   "devDependencies": {
     "babel-core": "^7.0.0-bridge.0",
@@ -55,8 +58,7 @@
     "jest": "24.1.0",
     "lint-staged": "^8.1.5",
     "prettier": "^1.16.4",
-    "react-test-renderer": "16.6.3",
-    "reactotron-redux": "^3.1.0"
+    "react-test-renderer": "16.6.3"
   },
   "jest": {
     "preset": "react-native"

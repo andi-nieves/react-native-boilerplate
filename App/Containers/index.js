@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import PropTypes from 'prop-types';
 import { View, Text, ListView } from 'react-native';
+import { get } from 'lodash';
 import Creators from '../Redux/Reducer/Test';
 
 const style = {
@@ -21,22 +22,44 @@ const style = {
     fontSize: 20,
     fontWeight: 'bold',
   },
+  row: {
+    padding: 5,
+    borderBottomColor: '#ccc',
+    borderBottomWidth: 0.3,
+  },
+  name: {
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
+  subtitle: {
+    fontSize: 12,
+    color: '#aaa',
+  },
 };
 
 class App extends Component {
   constructor(props) {
     super(props);
+    const { getGitUsers } = this.props;
+    getGitUsers();
+  }
+
+  componentDidMount() {
+    const { getGitUsers } = this.props;
+    getGitUsers();
+  }
+
+  formatUsersData = () => {
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
     });
-    this.state = {
-      dataSource: ds.cloneWithRows([{ id: 1, name: 'andy' }, { id: 2, name: 'kylie' }]),
-    };
-  }
+    const res = get(this.props, 'test.users', []);
+    return ds.cloneWithRows(res);
+  };
 
   render() {
-    const { dataSource } = this.state;
-    console.log(dataSource);
+    const { navigation } = this.props;
+    const dataSource = this.formatUsersData();
     return (
       <View style={style.container}>
         <View style={style.header}>
@@ -45,8 +68,14 @@ class App extends Component {
         <ListView
           dataSource={dataSource}
           renderRow={data => (
-            <View>
-              <Text>{data.name}</Text>
+            <View
+              style={style.row}
+              onTouchEnd={() => {
+                navigation.navigate('Screen2', { params: data });
+              }}
+            >
+              <Text style={style.name}>{data.login}</Text>
+              <Text style={style.subtitle}>{data.html_url}</Text>
             </View>
           )}
         />
@@ -55,11 +84,23 @@ class App extends Component {
   }
 }
 
+App.defaultProps = {
+  getGitUsers: () => {},
+  navigation: {},
+};
+App.propTypes = {
+  getGitUsers: PropTypes.func,
+  navigation: PropTypes.instanceOf(Object),
+};
 const mapDispatchToProps = dispatch => ({
   getGitUsers: () => dispatch(Creators.getGitUsers()),
 });
 
+const mapStateToProps = state => ({
+  test: state.Test,
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(App);

@@ -1,8 +1,8 @@
-import { createStore, applyMiddleware, compose } from "redux";
-import createSagaMiddleware from "redux-saga";
-import { createReactNavigationReduxMiddleware } from "react-navigation-redux-helpers";
-import Rehydration from "./Rehydration";
-import ReduxPersist from "./ReduxPersist";
+import { createStore, applyMiddleware, compose } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers';
+import Rehydration from './Rehydration';
+import ReduxPersist from './ReduxPersist';
 
 const Config = {
   useFixtures: false,
@@ -10,7 +10,7 @@ const Config = {
   yellowBox: __DEV__, // eslint-disable-line
   reduxLogging: __DEV__, // eslint-disable-line
   includeExamples: __DEV__, // eslint-disable-line
-  useReactotron: __DEV__ // eslint-disable-line
+  useReactotron: __DEV__, // eslint-disable-line
 };
 // creates the store
 export default (rootReducer, rootSaga) => {
@@ -21,17 +21,12 @@ export default (rootReducer, rootSaga) => {
   let store = null;
 
   /* ------------- Navigation Middleware ------------ */
-  const navigationMiddleware = createReactNavigationReduxMiddleware(
-    "root",
-    state => state.nav
-  );
+  const navigationMiddleware = createReactNavigationReduxMiddleware('root', state => state.nav);
   middleware.push(navigationMiddleware);
 
   /* ------------- Saga Middleware ------------- */
 
-  const sagaMonitor = Config.useReactotron
-    ? console.tron.createSagaMonitor()
-    : null;
+  const sagaMonitor = Config.useReactotron ? console.tron.createSagaMonitor() : null;
   const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
   middleware.push(sagaMiddleware);
 
@@ -39,11 +34,9 @@ export default (rootReducer, rootSaga) => {
 
   enhancers.push(applyMiddleware(...middleware));
 
-  console.log("Config.useReactotron", console.tron);
+  console.log('Config.useReactotron', console.tron);
   // if Reactotron is enabled (default for __DEV__), we'll create the store through Reactotron
-  const createAppropriateStore = Config.useReactotron
-    ? createStore
-    : createStore;
+  const createAppropriateStore = Config.useReactotron ? createStore : createStore;
 
   // eslint-disable-next-line
   if (window.__REDUX_DEVTOOLS_EXTENSION__) {
@@ -70,6 +63,6 @@ export default (rootReducer, rootSaga) => {
   return {
     store,
     sagasManager,
-    sagaMiddleware
+    sagaMiddleware,
   };
 };
