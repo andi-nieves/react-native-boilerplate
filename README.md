@@ -1,6 +1,8 @@
 # Boilerplate
 
 To rename project
+
+```
 yarn global add react-native-rename
 or
 npm install react-native-rename -g
@@ -11,6 +13,7 @@ npm install
 react-native link
 
 react-native link react-native-gesture-handler
+```
 
 ### FEATURES
 
