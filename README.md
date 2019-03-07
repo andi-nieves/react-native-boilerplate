@@ -1,12 +1,19 @@
 # Boilerplate
 
-To rename project
-_package.json_
+To rename project goto
+
+- package.json \*
 
 ```
 {
   "name": "yourprojectnamehere",
 
+```
+
+then
+
+```
+react-native upgrade
 ```
 
 ```
