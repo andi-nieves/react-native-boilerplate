@@ -1,37 +1,62 @@
-import React, { Component } from "react";
-import { Container, Content, Text, Button } from "native-base";
-import SwimplyHeader from "../Component/Header";
-import SwimplyFooter from "../Component/Footer";
-import Creators from "../Redux/Reducer/Test";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { View, Text, ListView } from 'react-native';
+import Creators from '../Redux/Reducer/Test';
+
+const style = {
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  header: {
+    width: '100%',
+    height: 100,
+    backgroundColor: 'red',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  headerTitle: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+};
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    const ds = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1 !== r2,
+    });
+    this.state = {
+      dataSource: ds.cloneWithRows([{ id: 1, name: 'andy' }, { id: 2, name: 'kylie' }]),
+    };
+  }
+
   render() {
-    const { navigation } = this.props;
-    console.log(this);
+    const { dataSource } = this.state;
+    console.log(dataSource);
     return (
-      <Container>
-        <SwimplyHeader />
-        <Content>
-          <Text>This is Content Section</Text>
-          <Button
-            onPress={() => {
-              // console.log("hey");
-              this.props.getGitUsers();
-              // navigation.navigate("Screen2");
-            }}
-          >
-            <Text>Screen 2</Text>
-          </Button>
-        </Content>
-        <SwimplyFooter />
-      </Container>
+      <View style={style.container}>
+        <View style={style.header}>
+          <Text style={style.headerTitle}>Boilerplate Demo</Text>
+        </View>
+        <ListView
+          dataSource={dataSource}
+          renderRow={data => (
+            <View>
+              <Text>{data.name}</Text>
+            </View>
+          )}
+        />
+      </View>
     );
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  getGitUsers: () => dispatch(Creators.getGitUsers())
+  getGitUsers: () => dispatch(Creators.getGitUsers()),
 });
 
 export default connect(

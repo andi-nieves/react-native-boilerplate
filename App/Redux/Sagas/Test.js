@@ -1,12 +1,12 @@
-import { call, put, takeLatest } from "redux-saga/effects";
-import TestActions, { TestTypes } from "../Reducer/Test";
+import { call, put, takeLatest } from 'redux-saga/effects';
+import Creators, { TestTypes } from '../Reducer/Test';
 
 export function* getTest(api) {
   try {
     const response = yield call(api.getGitUsers);
-    return response.data;
+    yield put(Creators.setState({ users: response.data }));
   } catch (e) {
-    console.log("e", e);
+    console.log('e', e);
   }
 }
 

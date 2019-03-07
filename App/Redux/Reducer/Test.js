@@ -1,18 +1,18 @@
-import { createReducer, createActions } from "reduxsauce";
-import Immutable from "seamless-immutable";
+import { createReducer, createActions } from 'reduxsauce';
+import Immutable from 'seamless-immutable';
 
 export const INITIAL_STATE = Immutable({
-  users: []
+  users: [],
 });
 
 const { Types, Creators } = createActions({
-  getGitUsers: null
+  getGitUsers: null,
 });
 
 const setState = (state, data) => state.merge({ ...data });
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.GET_GIT_USERS]: null
+  [Types.GET_GIT_USERS]: null,
 });
 
 export const TestTypes = Types;

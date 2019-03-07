@@ -1,18 +1,12 @@
-import { Component } from 'react';
+import React from 'react';
+import { Provider } from 'react-redux';
 import './Redux/Config/ReactotronConfig';
-import getTheme from './Theme/components';
-import variables from './Theme/variables';
 import createStore from './Redux/Reducer';
+import Routes from './Routes';
 
 const store = createStore();
-export default class App extends Component {
-	render() {
-		return (
-			<StyleProvider style={getTheme(variables)}>
-				<Provider store={store}>
-					<Routes />
-				</Provider>
-			</StyleProvider>
-		);
-	}
-}
+export default () => (
+  <Provider store={store}>
+    <Routes />
+  </Provider>
+);

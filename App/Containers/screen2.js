@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
-import {
-  Container, Content, Text, Button
-} from 'native-base';
-import SwimplyHeader from '../Component/Header';
-import SwimplyFooter from '../Component/Footer';
+import { View, Text } from 'react-native';
+
+const style = {
+  container: {
+    flex: 1,
+  },
+};
 
 export default class Screen2 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sample: 'hey',
+    };
+  }
+
   render() {
-    const { navigation } = this.props;
+    const { sample } = this.state;
     return (
-      <Container>
-        <SwimplyHeader />
-        <Content>
-          <Text>This is Content 2 Section</Text>
-          <Button
-            onPress={() => {
-              navigation.goBack();
-            }}
-          >
-            <Text>Screen 1</Text>
-          </Button>
-        </Content>
-        <SwimplyFooter />
-      </Container>
+      <View style={style.container}>
+        <Text>{sample}</Text>
+      </View>
     );
   }
 }
