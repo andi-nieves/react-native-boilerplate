@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { View, Text, ListView } from 'react-native';
-import Creators from '../Redux/Reducer/Test';
+import Creators from "../Redux/Reducer/Test";
 
 const style = {
   container: {
