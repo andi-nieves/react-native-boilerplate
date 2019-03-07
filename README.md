@@ -1,14 +1,15 @@
 # Boilerplate
 
 To rename project
+_package.json_
 
 ```
-yarn global add react-native-rename
-or
-npm install react-native-rename -g
+{
+  "name": "yourprojectnamehere",
 
-react-native-rename "Your App Name" -b com.your.app
+```
 
+```
 yarn / npm install / npm i
 react-native link
 
