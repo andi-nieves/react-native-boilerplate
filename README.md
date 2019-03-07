@@ -9,7 +9,7 @@ npm install react-native-rename -g
 
 react-native-rename "Your App Name" -b com.your.app
 
-npm install
+yarn / npm install / npm i
 react-native link
 
 react-native link react-native-gesture-handler
