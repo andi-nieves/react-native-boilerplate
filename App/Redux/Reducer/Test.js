@@ -1,8 +1,9 @@
 import { createReducer, createActions } from 'reduxsauce';
+import Immutable from 'seamless-immutable';
 
-export const INITIAL_STATE = {
+export const INITIAL_STATE = Immutable({
   users: [],
-};
+});
 
 const { Types, Creators } = createActions({
   getGitUsers: null,
