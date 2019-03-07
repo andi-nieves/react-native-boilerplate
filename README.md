@@ -19,8 +19,6 @@ react-native upgrade
 ```
 yarn / npm install / npm i
 react-native link
-
-react-native link react-native-gesture-handler
 ```
 
 ### FEATURES
