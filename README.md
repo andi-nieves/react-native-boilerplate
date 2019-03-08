@@ -87,7 +87,9 @@ export const reducer = createReducer(INITIAL_STATE, {
 
 export const TestTypes = Types;
 export default Creators;
+```
 
+```javascript
 import Creators as TestCreators from '../Redux/Reducer/Test';
 
 const mapDispatchToProps = dispatch => ({
@@ -100,4 +102,3 @@ export default connect(
 )(YourClassName);
 
 ```
-
