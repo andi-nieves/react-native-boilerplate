@@ -1,25 +1,14 @@
 import { AsyncStorage } from 'react-native';
 import { persistStore } from 'redux-persist';
 import ReduxPersist from './ReduxPersist';
-
-// eslint-disable-next-line
-const DebugConfig = {
-  useFixtures: false,
-  ezLogin: false,
-  yellowBox: __DEV__,
-  reduxLogging: __DEV__,
-  includeExamples: __DEV__,
-  useReactotron: __DEV__,
-};
+import DebugConfig from './DebugConfig';
 
 const changeAppLoading = store => {
   if (DebugConfig.useReactotron) {
     console.tron.log(store);
   }
-  // store.dispatch(Actions.isLoaded());
 };
 
-// eslint-disable-line
 const updateReducers = (store: Object) => {
   const { reducerVersion } = ReduxPersist;
 

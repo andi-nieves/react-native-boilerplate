@@ -1,8 +1,8 @@
 export default {
   useFixtures: false,
   ezLogin: false,
-  yellowBox: __DEV__,
-  reduxLogging: __DEV__,
-  includeExamples: __DEV__,
-  useReactotron: __DEV__,
+  yellowBox: __DEV__, // eslint-disable-line
+  reduxLogging: __DEV__, // eslint-disable-line
+  includeExamples: __DEV__, // eslint-disable-line
+  useReactotron: __DEV__, // eslint-disable-line
 };

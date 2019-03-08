@@ -11,7 +11,6 @@ const toImmutable = raw => Immutable(raw);
 
 export default {
   out: state => {
-    console.log('xx', state);
     // eslint-disable-next-line
     state.mergeDeep = R.identity;
     return toImmutable(state);

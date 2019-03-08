@@ -61,7 +61,7 @@ react-native link
   index.js
 ```
 
-### Redux
+### Redux - Creators & Types
 
 ```javascript
 import { createReducer, createActions } from "reduxsauce";

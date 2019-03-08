@@ -25,9 +25,7 @@ export default () => {
   const configStore = configureStore(finalReducers, rootSaga);
   const { store, sagaMiddleware } = configStore;
   let { sagasManager } = configStore;
-  // eslint-disable-next-line
   if (module.hot) {
-    // eslint-disable-next-line
     module.hot.accept(() => {
       // eslint-disable-next-line
       let nextRootReducer = require('./').reducers;

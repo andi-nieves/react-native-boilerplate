@@ -3,15 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers';
 import Rehydration from './Rehydration';
 import ReduxPersist from './ReduxPersist';
-
-const Config = {
-  useFixtures: false,
-  ezLogin: false,
-  yellowBox: __DEV__, // eslint-disable-line
-  reduxLogging: __DEV__, // eslint-disable-line
-  includeExamples: __DEV__, // eslint-disable-line
-  useReactotron: __DEV__, // eslint-disable-line
-};
+import Config from './DebugConfig';
 // creates the store
 export default (rootReducer, rootSaga) => {
   /* ------------- Redux Configuration ------------- */
@@ -34,7 +26,6 @@ export default (rootReducer, rootSaga) => {
 
   enhancers.push(applyMiddleware(...middleware));
 
-  console.log('Config.useReactotron', console.tron);
   // if Reactotron is enabled (default for __DEV__), we'll create the store through Reactotron
   const createAppropriateStore = Config.useReactotron ? createStore : createStore;
 
