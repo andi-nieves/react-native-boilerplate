@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { View, Text, ListView } from 'react-native';
+import { View, Text, ListView, TouchableOpacity } from 'react-native';
 import { get } from 'lodash';
 import Creators from '../Redux/Reducer/Test';
 
@@ -63,19 +63,20 @@ class App extends Component {
     return (
       <View style={style.container}>
         <View style={style.header}>
-          <Text style={style.headerTitle}>Boilerplate Demo</Text>
+          <Text style={style.headerTitle}>Boilerplate Demo v1</Text>
         </View>
         <ListView
           dataSource={dataSource}
           renderRow={data => (
-            <View
-              style={style.row}
-              onTouchEnd={() => {
-                navigation.navigate('Screen2', { params: data });
-              }}
-            >
-              <Text style={style.name}>{data.login}</Text>
-              <Text style={style.subtitle}>{data.html_url}</Text>
+            <View style={style.row}>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('ViewDetails', { params: data });
+                }}
+              >
+                <Text style={style.name}>{data.login}</Text>
+                <Text style={style.subtitle}>{data.html_url}</Text>
+              </TouchableOpacity>
             </View>
           )}
         />

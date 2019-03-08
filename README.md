@@ -58,7 +58,7 @@ react-native link
     - Api.js
     - ApiConfig.js
     - ApiTransform.js
-  index.js
+  - index.js
 ```
 
 ### Redux - Creators & Types
@@ -87,4 +87,17 @@ export const reducer = createReducer(INITIAL_STATE, {
 
 export const TestTypes = Types;
 export default Creators;
+
+import Creators as TestCreators from '../Redux/Reducer/Test';
+
+const mapDispatchToProps = dispatch => ({
+  getGitUsers: () => dispatch(TestCreators.getGitUsers()),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(YourClassName);
+
 ```
+

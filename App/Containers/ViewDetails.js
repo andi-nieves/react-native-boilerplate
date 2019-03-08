@@ -10,7 +10,7 @@ const style = {
   },
 };
 
-const Screen2 = props => {
+const ViewDetails = props => {
   const {
     navigation: {
       state: {
@@ -34,10 +34,10 @@ const Screen2 = props => {
   );
 };
 
-Screen2.defaultProps = {
+ViewDetails.defaultProps = {
   navigation: {},
 };
-Screen2.propTypes = {
+ViewDetails.propTypes = {
   navigation: PropTypes.instanceOf(Object),
 };
-export default Screen2;
+export default ViewDetails;
