@@ -65,7 +65,5 @@
     "preset": "react-native"
   },
   "main": "index.js",
-  "repository": "https://github.com/andi-nieves/react-native-boilerplate-andi.git",
-  "author": "dczii <dczii@live.com>",
   "license": "MIT"
 }
