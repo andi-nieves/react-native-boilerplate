@@ -1,4 +1,20 @@
-# Boilerplate
+<h1 align="center">
+  REACT-NATIVE BOILER PLATE
+</h1>
+
+<p align="center">
+  <a href="https://github.com/facebook/react-native/blob/master/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="React Native is released under the MIT license." />
+  </a>
+  <a href="https://www.npmjs.org/package/react-native">
+    <img src="https://badge.fury.io/js/react-native.svg" alt="Current npm package version." />
+  </a>
+  <a href="https://facebook.github.io/react-native/docs/contributing">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" />
+  </a>
+</p>
+
+### INSTALLATION
 
 To rename project goto
 
@@ -7,18 +23,14 @@ To rename project goto
 ```
 {
   "name": "yourprojectnamehere",
-
+}
 ```
 
 then
 
 ```
-react-native upgrade
-```
-
-```
-yarn / npm install / npm i
-react-native link
+yarn // npm install
+npm run init
 ```
 
 ### FEATURES
