@@ -24,8 +24,8 @@
     "lodash": "^4.17.11",
     "prop-types": "^15.7.2",
     "ramda": "^0.26.1",
-    "react": "16.6.3",
-    "react-native": "0.58.6",
+    "react": "^16.8.4",
+    "react-native": "^0.59.0-rc.3",
     "react-native-gesture-handler": "^1.1.0",
     "react-navigation": "^3.3.2",
     "react-navigation-redux-helpers": "1.1.0",
@@ -66,6 +66,6 @@
   },
   "main": "index.js",
   "repository": "https://github.com/andi-nieves/react-native-boilerplate-andi.git",
-  "author": "danilozabala <danilo.zabala@domandtom.com>",
+  "author": "dczii <dczii@live.com>",
   "license": "MIT"
 }

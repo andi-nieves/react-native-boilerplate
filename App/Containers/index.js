@@ -1,14 +1,11 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { View, Text, ListView, TouchableOpacity } from 'react-native';
-import { get } from 'lodash';
-import Creators from '../Redux/Reducer/Test';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const style = {
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
+    alignItems: 'center',
   },
   header: {
     width: '100%',
@@ -22,86 +19,22 @@ const style = {
     fontSize: 20,
     fontWeight: 'bold',
   },
-  row: {
-    padding: 5,
-    borderBottomColor: '#ccc',
-    borderBottomWidth: 0.3,
+  textStyle: {
+    fontSize: 20,
   },
-  name: {
-    fontWeight: 'bold',
-    fontSize: 15,
-  },
-  subtitle: {
-    fontSize: 12,
-    color: '#aaa',
-  },
-};
+});
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    const { getGitUsers } = this.props;
-    getGitUsers();
-  }
+export default function App() {
+  const [modalOpen, setModal] = useState('REACT');
 
-  componentDidMount() {
-    const { getGitUsers } = this.props;
-    getGitUsers();
-  }
-
-  formatUsersData = () => {
-    const ds = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1 !== r2,
-    });
-    const res = get(this.props, 'test.users', []);
-    return ds.cloneWithRows(res);
-  };
-
-  render() {
-    const { navigation } = this.props;
-    const dataSource = this.formatUsersData();
-    return (
-      <View style={style.container}>
-        <View style={style.header}>
-          <Text style={style.headerTitle}>Boilerplate Demo v1</Text>
-        </View>
-        <ListView
-          dataSource={dataSource}
-          renderRow={data => (
-            <View style={style.row}>
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate('ViewDetails', { params: data });
-                }}
-              >
-                <Text style={style.name}>{data.login}</Text>
-                <Text style={style.subtitle}>{data.html_url}</Text>
-              </TouchableOpacity>
-            </View>
-          )}
-        />
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>Boilerplate Demo v1</Text>
       </View>
-    );
-  }
+      <TouchableOpacity onPress={() => setModal('NATIVE')}>
+        <Text style={styles.textStyle}>{modalOpen}</Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
-
-App.defaultProps = {
-  getGitUsers: () => {},
-  navigation: {},
-};
-App.propTypes = {
-  getGitUsers: PropTypes.func,
-  navigation: PropTypes.instanceOf(Object),
-};
-const mapDispatchToProps = dispatch => ({
-  getGitUsers: () => dispatch(Creators.getGitUsers()),
-});
-
-const mapStateToProps = state => ({
-  test: state.Test,
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
