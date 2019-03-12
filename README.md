@@ -32,6 +32,10 @@ To rename project goto
 then
 
 ```
+react-native-rename "yourprojectname"
+```
+
+```
 yarn // npm install
 npm run init
 ```
