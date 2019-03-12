@@ -19,17 +19,7 @@
 
 ### INSTALLATION
 
-To rename project goto
-
-- package.json \*
-
-```
-{
-  "name": "yourprojectnamehere",
-}
-```
-
-then
+To rename project
 
 ```
 react-native-rename "yourprojectname"

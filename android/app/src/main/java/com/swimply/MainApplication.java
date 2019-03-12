@@ -1,4 +1,4 @@
-package com.yourprojectnamehere;
+package com.swimply;
 
 import android.app.Application;
 
