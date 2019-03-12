@@ -1,4 +1,4 @@
-package com.andi;
+package com.yourprojectnamehere;
 
 import android.app.Application;
 

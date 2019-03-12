@@ -19,7 +19,7 @@
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
-                                                      moduleName:@"andi"
+                                                      moduleName:@"yourprojectnamehere"
                                                initialProperties:nil
                                                    launchOptions:launchOptions];
   rootView.backgroundColor = [UIColor blackColor];
