@@ -1,4 +1,4 @@
-package com.swimply;
+package com.rnboilerplate;
 
 import android.app.Application;
 
